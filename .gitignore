@@ -1,9 +1,8 @@
 .mvn/
 mvnw
 mvnw.cmd
-target/*
-!target/pom.xml
-
+/target/
+!/target/pom.xml
 
 # IDEs
 
@@ -32,3 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
+
+/src/main/resources/application.properties
