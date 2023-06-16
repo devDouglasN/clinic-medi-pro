@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.transaction.Transactional;
 import medi.pro.api.medico.DadosCadastroMedico;
 import medi.pro.api.medico.Medico;
 import medi.pro.api.medico.MedicoRepository;
@@ -18,6 +19,7 @@ public class MedicoController {
 	private MedicoRepository repository;
 	
 	@PostMapping
+	@Transactional
 	public void cadastrar(@RequestBody DadosCadastroMedico dados) {
 		repository.save(new Medico(dados));
 	}
