@@ -1,6 +1,7 @@
 package medi.pro.api.medico;
 
-import medi.pro.api.endereco.Endereco;
+import medi.pro.api.domain.Endereco;
+import medi.pro.api.domain.Medico;
 
 public record DadosDetalhamentoMedico(Long id, String nome, String email, String crm, String telefone, Especialidade especialidade, Endereco endereco) {
 	

@@ -21,11 +21,11 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import medi.pro.api.domain.Medico;
 import medi.pro.api.medico.DadosAtualizacaoMedico;
 import medi.pro.api.medico.DadosCadastroMedico;
 import medi.pro.api.medico.DadosDetalhamentoMedico;
 import medi.pro.api.medico.DadosListagemMedico;
-import medi.pro.api.medico.Medico;
 import medi.pro.api.medico.MedicoRepository;
 
 @RestController

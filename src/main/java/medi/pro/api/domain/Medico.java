@@ -1,4 +1,4 @@
-package medi.pro.api.medico;
+package medi.pro.api.domain;
 
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -13,7 +13,9 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import medi.pro.api.endereco.Endereco;
+import medi.pro.api.medico.DadosAtualizacaoMedico;
+import medi.pro.api.medico.DadosCadastroMedico;
+import medi.pro.api.medico.Especialidade;
 
 @Table(name = "medicos")
 @Entity(name = "Medico")
