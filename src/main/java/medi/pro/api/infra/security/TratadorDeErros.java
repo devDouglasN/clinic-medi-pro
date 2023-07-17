@@ -1,4 +1,4 @@
-package medi.pro.api.infra;
+package medi.pro.api.infra.security;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
