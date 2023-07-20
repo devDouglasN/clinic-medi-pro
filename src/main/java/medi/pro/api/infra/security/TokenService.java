@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.auth0.jwt.JWT;
@@ -17,9 +18,12 @@ import medi.pro.api.domain.usuario.Usuario;
 @Service
 public class TokenService {
 	
+	@Value("${api.security.token.secret}")
+	private String secret;
+	
 	public String gerarToken(Usuario usuario) {
 		try {
-		    var algoritimo = Algorithm.HMAC256("123456");
+		    var algoritimo = Algorithm.HMAC256(secret);
 		    return JWT.create()
 		        .withIssuer("API Medi.pro")
 		        .withSubject(usuario.getLogin())
