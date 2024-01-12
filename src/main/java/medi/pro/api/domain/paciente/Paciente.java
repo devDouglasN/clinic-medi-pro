@@ -36,4 +36,17 @@ public class Paciente {
 	private Endereco endereco;
 	
 	private Boolean ativo;
+	
+	public Paciente(DadosCadastroPaciente dados) {
+		this.ativo = true;
+		this.nome = dados.nome();
+		this.email = dados.email();
+		this.telefone = dados.telefone();
+		this.dataNascimento = dados.dataNascimento();
+		this.genero = dados.genero();
+		this.registroSaude = dados.registroSaude();
+		this.endereco = dados.endereco();
+	}
+	
+	
 }
