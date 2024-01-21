@@ -9,7 +9,7 @@ import medi.pro.api.domain.ValidationException;
 import medi.pro.api.domain.consulta.AgendamentoConsulta;
 
 @Component
-public class ValidadorHorarioAntecedencia {
+public class ValidadorHorarioAntecedencia implements ValidadorAgendamentoDeConsulta {
 
 	public void validar(AgendamentoConsulta dados) {
 	    var dataConsulta = dados.data();

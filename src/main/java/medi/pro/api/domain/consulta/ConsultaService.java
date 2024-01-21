@@ -1,10 +1,13 @@
 package medi.pro.api.domain.consulta;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import medi.pro.api.domain.Medico;
 import medi.pro.api.domain.ValidationException;
+import medi.pro.api.domain.consulta.validacoes.ValidadorAgendamentoDeConsulta;
 import medi.pro.api.domain.paciente.PacienteRepository;
 import medi.pro.api.medico.MedicoRepository;
 
@@ -20,6 +23,9 @@ public class ConsultaService {
 	@Autowired
 	private MedicoRepository medicoRepository;
 	
+	@Autowired
+	private List<ValidadorAgendamentoDeConsulta> validadores;
+	
 	public DetalhamentoConsulta agendar(AgendamentoConsulta dados) {	
 		if(!pacienteRepository.existsById(dados.idPaciente())) {
 			throw new ValidationException("O ID do paciente fornecido não foi encontrado");
@@ -28,6 +34,8 @@ public class ConsultaService {
 		if(dados.idMedico() != null && !medicoRepository.existsById(dados.idMedico())) {
 			throw new ValidationException("O ID do medico fornecido não foi encontrado");
 		}
+		
+		validadores.forEach(v -> v.validar(dados));
 		
 		var paciente = pacienteRepository.findById(dados.idPaciente()).get();
 		var medico = selecionarMedico(dados);

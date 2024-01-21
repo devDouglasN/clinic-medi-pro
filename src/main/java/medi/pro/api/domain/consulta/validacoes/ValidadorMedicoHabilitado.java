@@ -8,7 +8,7 @@ import medi.pro.api.domain.consulta.AgendamentoConsulta;
 import medi.pro.api.medico.MedicoRepository;
 
 @Component
-public class ValidadorMedicoHabilitado {
+public class ValidadorMedicoHabilitado implements ValidadorAgendamentoDeConsulta {
 	
 	@Autowired
 	private MedicoRepository repository;
