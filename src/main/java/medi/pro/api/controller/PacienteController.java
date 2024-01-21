@@ -25,7 +25,6 @@ import medi.pro.api.domain.paciente.DadosDetalhamentoPaciente;
 import medi.pro.api.domain.paciente.DadosListagemPaciente;
 import medi.pro.api.domain.paciente.Paciente;
 import medi.pro.api.domain.paciente.PacienteRepository;
-import medi.pro.api.medico.DadosDetalhamentoMedico;
 
 @RestController
 @RequestMapping("pacientes")

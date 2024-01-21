@@ -1,16 +1,13 @@
-package medi.pro.api.domain;
+ package medi.pro.api.domain;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import medi.pro.api.endereco.DadosEndereço;
 
 @Embeddable
 @Getter
 @AllArgsConstructor
-@EqualsAndHashCode(of = "id")
 public class Endereco {
 	
 	private String logradouro;

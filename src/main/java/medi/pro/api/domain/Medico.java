@@ -34,7 +34,6 @@ public class Medico {
 
     @Enumerated(EnumType.STRING)
     
-   
     private Especialidade especialidade;
 
     @Embedded
