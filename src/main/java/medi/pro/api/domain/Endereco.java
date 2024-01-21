@@ -19,7 +19,6 @@ public class Endereco {
 	private String uf;
 	
 	public Endereco() {
-		
 	}
 	
 	public Endereco(DadosEndereço dados) {
@@ -55,6 +54,4 @@ public class Endereco {
 			this.uf = dados.uf();
 		}
 	}	
-	
-	
 }
