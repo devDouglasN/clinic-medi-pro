@@ -17,29 +17,31 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 public class SecurityConfigurations {
-	
+
 	@Autowired
 	private SecurityFilter securityFilter;
-	
+
 	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-		return http.csrf().disable()
-				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-				.and().authorizeRequests()
-                .requestMatchers(HttpMethod.POST, "/login").permitAll()
-                .anyRequest().authenticated()
-                .and().addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
-				.build();
-	}
-	
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		return http
+		        .cors().and().csrf(csrf -> csrf.disable())
+		        .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+		        .authorizeHttpRequests(req -> {
+		        	req.requestMatchers(HttpMethod.POST, "/login").permitAll();
+		            req.requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll();
+		            req.anyRequest().authenticated();
+		        })
+		        .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
+		        .build();
+		}
+
 	@Bean
-	public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception{
+	public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
 		return configuration.getAuthenticationManager();
 	}
-	
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
-}  
+}
