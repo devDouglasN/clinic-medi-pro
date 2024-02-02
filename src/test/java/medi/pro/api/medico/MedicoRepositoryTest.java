@@ -39,7 +39,7 @@ class MedicoRepositoryTest {
 	void decidirMedicoAleatorioNaDataCenario1() {
 		var proximaQuartaAs14 = LocalDate.now().with(TemporalAdjusters.next(DayOfWeek.MONDAY)).atTime(14, 0);
 
-		var medico = cadastrarMedico("DouglasN", "douglass@mail.com", "123456", Especialidade.OTORRINOLARINGOLOGIA);
+		var medico = cadastrarMedico("DouglasN", "douglass@mail.com", "14528815", "125478", Especialidade.OTORRINOLARINGOLOGIA, null);
 		var paciente = cadastrarPaciente("Jose", "jose@mail.com", "14525847", null, "masculino", "Febre", null);
 		cadastrarConsulta(medico, paciente, proximaQuartaAs14);
 
@@ -54,9 +54,9 @@ class MedicoRepositoryTest {
 	void decidirMedicoAleatorioNaDataCenario2() {
 		var proximaQuartaAs14 = LocalDate.now().with(TemporalAdjusters.next(DayOfWeek.MONDAY)).atTime(14, 0);
 
-		var medico = cadastrarMedico("DouglasN", "douglass@mail.com", "123456", Especialidade.OTORRINOLARINGOLOGIA);
+		var medico = cadastrarMedico("DouglasN", "douglass@mail.com", "14525874", "123456", Especialidade.OTORRINOLARINGOLOGIA, null);
 
-		var medicoDisponivel = medicoRepository.decidirMedicoAleatorioNaData(Especialidade.ORTOPEDIA,
+		var medicoDisponivel = medicoRepository.decidirMedicoAleatorioNaData(Especialidade.OTORRINOLARINGOLOGIA,
 				proximaQuartaAs14);
 		assertThat(medicoDisponivel).isEqualTo(medico);
 	}
@@ -65,21 +65,22 @@ class MedicoRepositoryTest {
 		em.persist(new Consulta(null, medico, paciente, data));
 	}
 
-	private Medico cadastrarMedico(String nome, String email, String crm, Especialidade especialidade) {
-		var medico = new Medico(dadosMedico(nome, email, crm, especialidade));
+	private Medico cadastrarMedico(String nome, String email, String telefone, String crm, Especialidade especialidade, Endereco dadosEndereco) {
+		var medico = new Medico(dadosMedico(nome, email, telefone, crm, especialidade, dadosEndereco));
 		em.persist(medico);
 		return medico;
 	}
 
 	private Paciente cadastrarPaciente(String nome, String email, String telefone, Date nasc, String genero,
 			String registroSaude, Endereco endereco) {
+
 		var paciente = new Paciente(dadosPaciente(nome, email, telefone, nasc, genero, registroSaude, endereco));
 		em.persist(paciente);
 		return paciente;
 	}
 
-	private DadosCadastroMedico dadosMedico(String nome, String email, String crm, Especialidade especialidade) {
-		return new DadosCadastroMedico(nome, email, "15554777", crm, especialidade, dadosEndereco());
+	private DadosCadastroMedico dadosMedico(String nome, String email, String telefone, String crm, Especialidade especialidade, Endereco dadosEndereco) {
+		return new DadosCadastroMedico(nome, email, telefone, crm, especialidade, dadosEndereco());
 	}
 
 	private DadosCadastroPaciente dadosPaciente(String nome, String email, String telefone, Date nasc, String genero,
@@ -88,6 +89,6 @@ class MedicoRepositoryTest {
 	}
 
 	private DadosEndereço dadosEndereco() {
-		return new DadosEndereço("rua abc", "bairro", "00000000", "São Paulo", "SP", null, null);
+		return new DadosEndereço("rua abc", "bairro", "12347589", "São Paulo", "SP", "Apartamento", "111");
 	}
 }
