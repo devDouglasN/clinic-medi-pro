@@ -33,7 +33,6 @@ public class Medico {
     private String telefone;
 
     @Enumerated(EnumType.STRING)
-    
     private Especialidade especialidade;
 
     @Embedded

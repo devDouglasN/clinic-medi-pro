@@ -18,7 +18,7 @@ import medi.pro.api.domain.Medico;
 import medi.pro.api.domain.paciente.Paciente;
 
 @Table(name = "consultas")
-@Entity(name = "consulta")
+@Entity
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -28,7 +28,7 @@ public class Consulta {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "medico_id")
 	private Medico medico;
