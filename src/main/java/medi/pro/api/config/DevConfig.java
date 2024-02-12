@@ -13,7 +13,7 @@ import medi.pro.api.services.DBServices;
 public class DevConfig {
 
 	@Autowired
-	private DBServices system;
+	private DBServices dbServices;
 
 	@Value("${spring.jpa.hibernate.ddl-auto}")
 	private String value;
@@ -22,9 +22,8 @@ public class DevConfig {
 	public boolean dbService() {
 
 		if (value.equals("create")) {
-			this.system.dbService();
+			this.dbServices.dbService();
 		}
-
 		return false;
 	}
 }
