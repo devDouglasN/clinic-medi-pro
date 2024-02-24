@@ -32,7 +32,7 @@ public class DBServices {
 		List<Medico> saveMedicos = medicoRepository.saveAll(medicos);
 		
 		Paciente pac1 = new Paciente(null, "Tiago Martins", "tiago.martins@mail.com", "11900112233", null, "Masculino", "Hipertensão Arterial", null, true);
-		Paciente pac2 = new Paciente(null, "Ana Silva", "ana.silva@mail.com", "11999887766", null, "Feminino", "Infecção vaginal", null, true);
+		Paciente pac2 = new Paciente(null, "Ana Silva", "ana.silva@mail.com", "11999887766", null, "Feminino", "Infecção", null, true);
 		Paciente pac3 = new Paciente(null, "Pedro Santos", "pedro.santos@mail.com", "11995544332", null, "Masculino", "Hipertensão arterial", null, true);
 		Paciente pac4 = new Paciente(null, "Mariana Oliveira", "mariana.oliveira@mail.com", "11996611223", null, "Feminino", "Fratura de tornozelo", null, true);
 		Paciente pac5 = new Paciente(null, "Carlos Almeida", "carlos.almeida@mail.com", "11994455661", null, "Masculino", "Perda auditiva", null, true);

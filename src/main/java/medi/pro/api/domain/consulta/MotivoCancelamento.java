@@ -1,0 +1,13 @@
+package medi.pro.api.domain.consulta;
+
+public enum MotivoCancelamento {
+	PACIENTE_DESISTIU,
+	MEDICO_CANCELOU,
+	EMERGENCIA_MEDICA,
+    PROBLEMAS_DE_AGENDAMENTO,
+    FALTA_DE_TRANSPORTE,
+    FALTA_DE_EQUIPAMENTO,
+    CONFLITO_DE_HORARIO,
+    CONDICAO_CLIMATICA,
+	OUTROS;
+}
