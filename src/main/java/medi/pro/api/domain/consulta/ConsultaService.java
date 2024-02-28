@@ -27,6 +27,10 @@ public class ConsultaService {
 	@Autowired
 	private List<ValidadorAgendamentoDeConsulta> validadores;
 	
+	public List<Consulta> listAll(){
+		return consultaRepository.findAll();
+	}
+	
 	public DetalhamentoConsulta agendar(AgendamentoConsulta dados) {	
 		if(!pacienteRepository.existsById(dados.idPaciente())) {
 			throw new ValidationException("O ID do paciente fornecido não foi encontrado");
