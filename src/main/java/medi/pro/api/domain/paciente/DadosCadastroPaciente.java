@@ -2,8 +2,10 @@ package medi.pro.api.domain.paciente;
 
 import java.util.Date;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
-import medi.pro.api.domain.Endereco;
+import jakarta.validation.constraints.NotNull;
+import medi.pro.api.endereco.DadosEndereço;
 
 public record DadosCadastroPaciente(
 		
@@ -24,5 +26,7 @@ public record DadosCadastroPaciente(
 		@NotBlank
 		String registroSaude,
 		
-		Endereco endereco) {
+		@NotNull
+		@Valid
+		DadosEndereço endereco) {
 }
