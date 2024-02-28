@@ -46,7 +46,7 @@ public class Paciente {
 		this.dataNascimento = dados.dataNascimento();
 		this.genero = dados.genero();
 		this.registroSaude = dados.registroSaude();
-		this.endereco = dados.endereco();
+		this.endereco = new Endereco(dados.endereco());
 	}
 	
 	public void atualizarInformacoes(@Valid DadosAtualizacaoPaciente dados) {

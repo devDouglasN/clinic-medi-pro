@@ -9,5 +9,4 @@ public record DadosAtualizacaoMedico(
 		String nome, 
 		String telefone, 
 		DadosEndereço endereco) {
-	
 }
