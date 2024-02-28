@@ -72,7 +72,7 @@ class MedicoRepositoryTest {
 	}
 
 	private Paciente cadastrarPaciente(String nome, String email, String telefone, Date nasc, String genero,
-			String registroSaude, Endereco endereco) {
+			String registroSaude, DadosEndereço endereco) {
 
 		var paciente = new Paciente(dadosPaciente(nome, email, telefone, nasc, genero, registroSaude, endereco));
 		em.persist(paciente);
@@ -84,7 +84,7 @@ class MedicoRepositoryTest {
 	}
 
 	private DadosCadastroPaciente dadosPaciente(String nome, String email, String telefone, Date nasc, String genero,
-			String registroSaude, Endereco endereco) {
+			String registroSaude, DadosEndereço endereco) {
 		return new DadosCadastroPaciente(nome, email, telefone, nasc, genero, registroSaude, endereco);
 	}
 
