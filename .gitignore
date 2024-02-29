@@ -1,8 +1,9 @@
-.mvn/
-mvnw
-mvnw.cmd
-/target/
-!/target/pom.xml
+
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
 
 # IDEs
 
