@@ -6,18 +6,22 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import medi.pro.api.domain.Endereco;
 import medi.pro.api.domain.Medico;
 import medi.pro.api.domain.paciente.Paciente;
 import medi.pro.api.domain.paciente.PacienteRepository;
+import medi.pro.api.domain.usuario.Usuario;
+import medi.pro.api.domain.usuario.UsuarioRepository;
 import medi.pro.api.endereco.DadosEndereço;
 import medi.pro.api.medico.Especialidade;
 import medi.pro.api.medico.MedicoRepository;
 
 @Service
-public class DBServices {
+public class DBServices implements CommandLineRunner{
 	
 	@Autowired
 	private MedicoRepository medicoRepository;
@@ -25,8 +29,22 @@ public class DBServices {
 	@Autowired
 	private PacienteRepository pacienteRepository;
 	
-	public void dbService() {
-		
+	@Autowired
+    private UsuarioRepository usuarioRepository;
+	
+	@Autowired
+    private PasswordEncoder passwordEncoder;
+	
+	@Override
+	public void run(String... args) throws Exception {
+		String login = "test@test.com";
+		String senha = "123";
+		String senhaCriptografada = passwordEncoder.encode(senha);
+		Usuario usuario = new Usuario(null, login, senhaCriptografada);
+		if (!usuarioRepository.existsByLogin(login)) {
+			usuarioRepository.save(usuario);
+		}
+
 		DadosEndereço endMed1 = new DadosEndereço("Avenida Paulista", "Bela Vista", "01311300", "São Paulo", "SP", "Complemento 1", "15");
 		Endereco enderecoMed1 = new Endereco(endMed1);
 		
@@ -70,11 +88,11 @@ public class DBServices {
 		DadosEndereço endPac9 = new DadosEndereço("Rua Purpurina", "Vila Madalena", "05435000", "São Paulo", "SP", "Complemento 14", "785");
 		Endereco enderecoPac9 = new Endereco(endPac9);
 		
-		Medico med1 = new Medico(null, "Carolina Sousa", "carolina.sousa.medi.pro", "12345/SP", "11988884444", Especialidade.CARDIOLOGIA, enderecoMed1, true);
-		Medico med2 = new Medico(null, "Miguel Costa", "miguel.costa.medi.pro", "54215/SP", "11999885522", Especialidade.GINECOLOGIA, enderecoMed2, true);
-		Medico med3 = new Medico(null, "Sofia Pereira", "sofia.pereira.medi.pro", "85415/SP", "11986682233", Especialidade.CARDIOLOGIA, enderecoMed3, true);
-		Medico med4 = new Medico(null, "Carolina Sousa", "carolina.sousa.medi.pro", "12345/SP", "11988884444", Especialidade.ORTOPEDIA, enderecoMed4, true);
-		Medico med5 = new Medico(null, "Miguel Ferreira", "miguel.ferreira.medi.pro", "45874/SP", "11988884444", Especialidade.OTORRINOLARINGOLOGIA, enderecoMed5, true);
+		Medico med1 = new Medico(null, "Carolina Sousa", "carolina.sousa.medi.pro", "96884/SP", "11988084444", Especialidade.CARDIOLOGIA, enderecoMed1, true);
+		Medico med2 = new Medico(null, "José Antonio", "jose.antonio.medi.pro", "58745/SP", "11999685522", Especialidade.OTORRINOLARINGOLOGIA, enderecoMed2, true);
+		Medico med3 = new Medico(null, "Sofia Pereira", "sofia.pereira.medi.pro", "85415/SP", "11986682233", Especialidade.GINECOLOGIA, enderecoMed3, true);
+		Medico med4 = new Medico(null, "Isabel Tavares", "isabel.tavares.medi.pro", "58455/SP", "11988884444", Especialidade.ORTOPEDIA, enderecoMed4, true);
+		Medico med5 = new Medico(null, "Miguel Ferreira", "miguel.ferreira.medi.pro", "45874/SP", "119899884444", Especialidade.ORTOPEDIA, enderecoMed5, true);
 		List<Medico> medicos = Arrays.asList(med1, med2, med3, med4, med5);
 		List<Medico> saveMedicos = medicoRepository.saveAll(medicos);
 		
@@ -114,6 +132,6 @@ public class DBServices {
 		Date dataNascimento9 = Date.valueOf(localDate9);	
 		Paciente pac9 = new Paciente(null, "Camila Silva", "camila.silva@mail.com", "11997755441", dataNascimento9, "Feminino", "Gravidez de alto risco", enderecoPac9, true);
 		List<Paciente> pacientes = Arrays.asList(pac1, pac2, pac3, pac4, pac5, pac6, pac7, pac8, pac9);
-		List<Paciente> savePacientes = pacienteRepository.saveAll(pacientes);	
+		List<Paciente> savePacientes = pacienteRepository.saveAll(pacientes);			
 	}
 }
