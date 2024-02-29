@@ -27,8 +27,12 @@ public class ConsultaService {
 	@Autowired
 	private List<ValidadorAgendamentoDeConsulta> validadores;
 	
-	public List<Consulta> listAll(){
+	public List<Consulta> findAll(){
 		return consultaRepository.findAll();
+	}
+	
+	public List<Consulta> consultasCanceladas(){
+		return consultaRepository.findAllAByCanceladaTrue();
 	}
 	
 	public DetalhamentoConsulta agendar(AgendamentoConsulta dados) {	
