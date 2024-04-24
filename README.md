@@ -1,6 +1,6 @@
 # Sobre o projeto 
 ## 🏥 Clinic Med 
-Clinic Med é uma API para uma clínica médica criada para para monitorar o cadastro de médicos, pacientes e agendamento de consultas. 
+Clinic Med é uma API para uma clínica médica criada para monitorar o cadastro de médicos, pacientes e agendamento de consultas. 
 <br>
 
 ## 🎥  Assista ao vídeo do projeto  
